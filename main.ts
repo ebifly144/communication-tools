@@ -10,7 +10,6 @@ radio.onReceivedString(function (receivedString) {
 })
 let mode = 0
 radio.setGroup(1)
-basic.showString("Hello!")
 basic.forever(function () {
 	
 })
