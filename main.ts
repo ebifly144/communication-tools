@@ -13,8 +13,12 @@ input.onButtonPressed(Button.A, function () {
         mode = 1
         recieved = 0
         sended = 1
-        basic.showString("Sending")
         radio.sendNumber(1)
+        basic.showString("Sending")
+    } else if (mode == 1 && recieved == 1) {
+    	
+    } else {
+    	
     }
 })
 let sended = 0
