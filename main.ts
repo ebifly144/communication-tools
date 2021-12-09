@@ -18,9 +18,12 @@ input.onButtonPressed(Button.A, function () {
     }
 })
 let sended = 0
-let recieved = 0
 let mode = 0
+let recieved = 0
 radio.setGroup(1)
+recieved = 0
+mode = 0
+sended = 0
 basic.forever(function () {
 	
 })
