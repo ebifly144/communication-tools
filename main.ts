@@ -1,4 +1,11 @@
 radio.onReceivedNumber(function (receivedNumber) {
+    if (receivedNumber == 0 && !(connect == 1)) {
+        connect = 1
+        mode = 0
+        roll = 0
+        radio.sendNumber(0)
+        basic.showString("Select your roll!")
+    }
     if (receivedNumber == 1) {
         basic.showString("Called from student.Busy to A.not Busy to B")
         mode = 2
@@ -125,8 +132,6 @@ let Apushed = 0
 let CanMeet = 0
 let roll = 0
 let mode = 0
-radio.setGroup(1)
+let connect = 0
+radio.setGroup(144)
 radio.sendNumber(0)
-mode = 0
-roll = 0
-basic.showString("Select your roll!")
