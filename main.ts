@@ -7,7 +7,7 @@ radio.onReceivedNumber(function (receivedNumber) {
         basic.showString("Select your roll!")
     }
     if (receivedNumber == 1) {
-        basic.showString("Called from student.Busy to A.not Busy to B")
+        basic.showString("Called from parent.Busy to A.not Busy to B")
         mode = 2
     }
     if (receivedNumber == 2) {
@@ -17,8 +17,8 @@ radio.onReceivedNumber(function (receivedNumber) {
         SestartStudent()
     }
     if (receivedNumber == 3) {
-        basic.showString("You can meet A to ask Where")
-        mode = 3
+        basic.showString("You can meet A or B")
+        mode = 4
         CanMeet = 1
     }
     if (receivedNumber == 4) {
@@ -26,31 +26,39 @@ radio.onReceivedNumber(function (receivedNumber) {
         mode = 4
     }
     if (receivedNumber == 5) {
-        basic.showString("Staff room")
-        SestartStudent()
+        basic.showString("Meals")
+        mode = 11
     }
     if (receivedNumber == 6) {
-        basic.showString("Instructor's room")
-        SestartStudent()
+        basic.showString("Shower")
+        mode = 11
     }
     if (receivedNumber == 7) {
-        basic.showString("Classroom")
-        SestartStudent()
+        basic.showString("Help me")
+        mode = 11
     }
     if (receivedNumber == 8) {
-        basic.showString("Special classroom")
-        SestartStudent()
+        basic.showString("Others")
+        mode = 11
+    }
+    if (receivedNumber == 9) {
+        basic.showString("Yes Ended! A to call")
+        mode = 1
+    }
+    if (receivedNumber == 10) {
+        basic.showString("No Ended! B to call")
+        mode = 1
     }
 })
 function SestartStudent () {
     mode = 1
-    basic.showString("Ended! A to call")
+    basic.showString("Ended!")
 }
 input.onButtonPressed(Button.A, function () {
     Apushed = 1
     if (mode == 0 && Apushed == 1) {
         Apushed = 0
-        basic.showString("Student A to call")
+        basic.showString("Parent A to call")
         roll = 1
         mode = 1
     }
@@ -60,7 +68,7 @@ input.onButtonPressed(Button.A, function () {
         radio.sendNumber(1)
         basic.showString("Called")
     }
-    if (mode == 2 && roll == 0 && Apushed == 1) {
+    if (mode == -1 && roll == 0 && Apushed == 1) {
         Apushed = 0
         mode = 3
         radio.sendNumber(2)
@@ -72,23 +80,29 @@ input.onButtonPressed(Button.A, function () {
         radio.sendNumber(4)
         basic.showString("Sended")
     }
-    if (mode == 4 && roll == 0 && Apushed == 1) {
+    if (mode == 4 && roll == 1 && Apushed == 1) {
         Apushed = 0
         mode = 5
         basic.showString("A or B")
     }
-    if (mode == 5 && roll == 0 && Apushed == 1) {
+    if (mode == 5 && roll == 1 && Apushed == 1) {
         Apushed = 0
         mode = 7
         radio.sendNumber(5)
-        basic.showString("Staff room")
-        mode = 1
+        basic.showString("Meal")
+        mode = 11
     }
-    if (mode == 6 && roll == 0 && Apushed == 1) {
+    if (mode == 6 && roll == 1 && Apushed == 1) {
         Apushed = 0
         mode = 8
         radio.sendNumber(6)
-        basic.showString("Instructor's room")
+        basic.showString("Shower")
+        mode = 11
+    }
+    if (mode == 11 && roll == 0 && Apushed == 1) {
+        Apushed = 0
+        radio.sendNumber(9)
+        basic.showString("Yes")
         mode = 1
     }
 })
@@ -98,7 +112,7 @@ input.onButtonPressed(Button.B, function () {
         Bpushed = 0
         roll = 0
         mode = 1
-        basic.showString("Teacher")
+        basic.showString("Kid")
     }
     if (mode == 2 && roll == 0 && Bpushed == 1) {
         Bpushed = 0
@@ -107,23 +121,29 @@ input.onButtonPressed(Button.B, function () {
         basic.showString("Sended")
         mode = 1
     }
-    if (mode == 4 && roll == 0 && Bpushed == 1) {
+    if (mode == 4 && roll == 1 && Bpushed == 1) {
         Bpushed = 0
         mode = 6
         basic.showString("A or B")
     }
-    if (mode == 5 && roll == 0 && Bpushed == 1) {
+    if (mode == 5 && roll == 1 && Bpushed == 1) {
         Bpushed = 0
         mode = 9
         radio.sendNumber(7)
-        basic.showString("Classroom")
-        mode = 1
+        basic.showString("Help me")
+        mode = 11
     }
-    if (mode == 6 && roll == 0 && Bpushed == 1) {
+    if (mode == 6 && roll == 1 && Bpushed == 1) {
         Bpushed = 0
         mode = 10
         radio.sendNumber(8)
-        basic.showString("Special classroom")
+        basic.showString("Other")
+        mode = 11
+    }
+    if (mode == 11 && roll == 0 && Bpushed == 1) {
+        Bpushed = 0
+        radio.sendNumber(10)
+        basic.showString("No")
         mode = 1
     }
 })
