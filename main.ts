@@ -7,8 +7,9 @@ radio.onReceivedNumber(function (receivedNumber) {
         basic.showString("Select your roll!")
     }
     if (receivedNumber == 1) {
-        basic.showString("Called from parent.Busy to A.not Busy to B")
         mode = 2
+        music.startMelody(music.builtInMelody(Melodies.Ringtone), MelodyOptions.Once)
+        basic.showString("Called from parent.Busy to A.not Busy to B")
     }
     if (receivedNumber == 2) {
         basic.showString("You cant meet")
