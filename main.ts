@@ -8,7 +8,7 @@ radio.onReceivedNumber(function (receivedNumber) {
     }
     if (receivedNumber == 1) {
         mode = 2
-        music.startMelody(music.builtInMelody(Melodies.Ringtone), MelodyOptions.Once)
+        music.startMelody(music.builtInMelody(Melodies.Ringtone), MelodyOptions.OnceInBackground)
         basic.showString("Called from parent.Busy to A.not Busy to B")
     }
     if (receivedNumber == 2) {
@@ -119,7 +119,7 @@ input.onButtonPressed(Button.B, function () {
         Bpushed = 0
         mode = 3
         radio.sendNumber(3)
-        basic.showString("Sended")
+        basic.showString("Sand")
         mode = 1
     }
     if (mode == 4 && roll == 1 && Bpushed == 1) {
