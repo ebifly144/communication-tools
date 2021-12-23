@@ -73,13 +73,13 @@ input.onButtonPressed(Button.A, function () {
         Apushed = 0
         mode = 3
         radio.sendNumber(2)
-        basic.showString("Sended")
+        basic.showString("Sand")
     }
     if (mode == 3 && roll == 1 && Apushed == 1) {
         Apushed = 0
         mode = 4
         radio.sendNumber(4)
-        basic.showString("Sended")
+        basic.showString("Sand")
     }
     if (mode == 4 && roll == 1 && Apushed == 1) {
         Apushed = 0
