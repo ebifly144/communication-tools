@@ -69,7 +69,7 @@ input.onButtonPressed(Button.A, function () {
         radio.sendNumber(1)
         basic.showString("Called")
     }
-    if (mode == -1 && roll == 0 && Apushed == 1) {
+    if (mode == 2 && roll == 0 && Apushed == 1) {
         Apushed = 0
         mode = 3
         radio.sendNumber(2)
