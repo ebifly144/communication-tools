@@ -27,7 +27,7 @@ radio.onReceivedNumber(function (receivedNumber) {
         mode = 4
     }
     if (receivedNumber == 5) {
-        basic.showString("Meals")
+        basic.showString("Meal")
         mode = 11
     }
     if (receivedNumber == 6) {
