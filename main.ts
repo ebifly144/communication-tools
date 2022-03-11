@@ -4,11 +4,12 @@ radio.onReceivedNumber(function (receivedNumber) {
         mode = 0
         roll = 0
         radio.sendNumber(0)
-        basic.showString("successful! select your roll!")
+        basic.showNumber(receivedNumber)
+        basic.showString("select your roll!")
     }
     if (receivedNumber == 1) {
         mode = 2
-        music.startMelody(music.builtInMelody(Melodies.Ringtone), MelodyOptions.OnceInBackground)
+        music.startMelody(music.builtInMelody(Melodies.Nyan), MelodyOptions.OnceInBackground)
         basic.showString("Called from parent.Busy to A.not Busy to B")
     }
     if (receivedNumber == 2) {
@@ -73,6 +74,7 @@ input.onButtonPressed(Button.A, function () {
         Apushed = 0
         mode = 3
         radio.sendNumber(2)
+        music.stopMelody(MelodyStopOptions.All)
         basic.showString("Sand")
     }
     if (mode == 3 && roll == 1 && Apushed == 1) {
@@ -119,6 +121,7 @@ input.onButtonPressed(Button.B, function () {
         Bpushed = 0
         mode = 3
         radio.sendNumber(3)
+        music.stopMelody(MelodyStopOptions.All)
         basic.showString("Sand")
         mode = 1
     }
@@ -156,3 +159,8 @@ let mode = 0
 let connect = 0
 radio.setGroup(144)
 radio.sendNumber(0)
+basic.forever(function () {
+    if (mode == 2 && roll == 0) {
+        music.startMelody(music.builtInMelody(Melodies.Nyan), MelodyOptions.OnceInBackground)
+    }
+})
