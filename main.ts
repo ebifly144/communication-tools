@@ -64,7 +64,7 @@ input.onButtonPressed(Button.A, function () {
         roll = 1
         mode = 1
     }
-    if (mode == 1 && roll == 1 && Apushed == 1) {
+    if ((mode == 1 || mode == 1) && roll == 1 && Apushed == 1) {
         Apushed = 0
         mode = 2
         radio.sendNumber(1)
@@ -151,6 +151,11 @@ input.onButtonPressed(Button.B, function () {
         mode = 1
     }
 })
+music.onEvent(MusicEvent.BackgroundMelodyEnded, function () {
+    if (mode == 2 && roll == 0) {
+        music.startMelody(music.builtInMelody(Melodies.Nyan), MelodyOptions.OnceInBackground)
+    }
+})
 let Bpushed = 0
 let Apushed = 0
 let CanMeet = 0
@@ -159,8 +164,3 @@ let mode = 0
 let connect = 0
 radio.setGroup(144)
 radio.sendNumber(0)
-basic.forever(function () {
-    if (mode == 2 && roll == 0) {
-        music.startMelody(music.builtInMelody(Melodies.Nyan), MelodyOptions.OnceInBackground)
-    }
-})
