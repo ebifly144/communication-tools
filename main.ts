@@ -4,7 +4,13 @@ radio.onReceivedNumber(function (receivedNumber) {
         mode = 0
         roll = 0
         radio.sendNumber(0)
-        basic.showNumber(receivedNumber)
+        basic.showLeds(`
+            # # # # #
+            # # # # #
+            # # # # #
+            # # # # #
+            # # # # #
+            `)
         basic.showString("select your roll!")
     }
     if (receivedNumber == 1) {

@@ -12,7 +12,8 @@
         "main.ts",
         "README.md",
         "_locales/ja/README.md",
-        "tutorial-info-cache.json"
+        "tutorial-info-cache.json",
+        "main.py"
     ],
     "testFiles": [
         "test.ts"
