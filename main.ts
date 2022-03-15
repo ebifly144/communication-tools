@@ -16,7 +16,8 @@ radio.onReceivedNumber(function (receivedNumber) {
         basic.showString("You cant meet")
         mode = 3
         CanMeet = 0
-        RestartStudent()
+        mode = 1
+        basic.showString("Ended!")
     }
     if (receivedNumber == 3) {
         basic.showString("You can meet A or B")
@@ -52,10 +53,6 @@ radio.onReceivedNumber(function (receivedNumber) {
         mode = 1
     }
 })
-function RestartStudent () {
-    mode = 1
-    basic.showString("Ended!")
-}
 input.onButtonPressed(Button.A, function () {
     Apushed = 1
     if (mode == 0 && Apushed == 1) {
